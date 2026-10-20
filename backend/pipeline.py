@@ -1772,7 +1772,7 @@ def run_complete_pipeline(
             "threat_classification": classification,
             "calculation_explanation": (
                 f"AEGIS Threat Index (ATI: {ati}/100) calculated via weighted multimodal evidence: "
-                f"{', '.join([f'{c['event_type']} ({c['sub_score']:.3f})' for c in fusion_result.get('contributions', [])])} "
+                f"{', '.join('{} ({:.3f})'.format(c['event_type'], c['sub_score']) for c in fusion_result.get('contributions', []))} "
                 f"scaled by infrastructure proximity multiplier {infra_multiplier}x."
             ),
             "analysis_status": "COMPLETED",
